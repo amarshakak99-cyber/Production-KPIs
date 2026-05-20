@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Berber Cement | Monthly KPI Scorecard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "surface-dim": "#0e141c",
+                        "background": "#0e141c",
+                        "on-secondary-container": "#eca57b",
+                        "on-primary-fixed": "#001c38",
+                        "text-muted": "#B0BCC7",
+                        "inverse-primary": "#386090",
+                        "on-tertiary-container": "#005e47",
+                        "primary": "#d3e4ff",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "inverse-surface": "#dde3ef",
+                        "surface-container-high": "#1e2a3e",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#2f353e",
+                        "text-high-contrast": "#FFFFFF",
+                        "surface-card": "#26354D",
+                        "surface-bright": "#333a43",
+                        "on-primary-fixed-variant": "#1c4877",
+                        "on-background": "#dde3ef",
+                        "border-subtle": "#364966",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2b313a",
+                        "outline": "#8d919a",
+                        "secondary-fixed-dim": "#ffb68b",
+                        "on-primary": "#00315b",
+                        "surface-container": "#1a2029",
+                        "outline-variant": "#42474f",
+                        "tertiary-container": "#63dbb3",
+                        "primary-container": "#a2c9ff",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "surface-variant": "#2f353e",
+                        "on-secondary": "#502405",
+                        "secondary-container": "#6c3a19",
+                        "secondary": "#ffb68b",
+                        "surface": "#071326",
+                        "on-tertiary": "#003829",
+                        "secondary-fixed": "#ffdbc9",
+                        "status-info": "#0066B3",
+                        "on-secondary-fixed": "#321200",
+                        "on-secondary-fixed-variant": "#6c3a19",
+                        "status-success": "#009B77",
+                        "on-primary-container": "#2b5483",
+                        "status-warning": "#FFC107",
+                        "on-tertiary-fixed": "#002117",
+                        "primary-fixed": "#d3e4ff",
+                        "surface-tint": "#a2c9ff",
+                        "status-danger": "#DC3545",
+                        "tertiary-fixed-dim": "#63dbb3",
+                        "on-surface-variant": "#c3c6d0",
+                        "tertiary-fixed": "#81f8ce",
+                        "surface-container-low": "#161c24",
+                        "tertiary": "#81f8ce",
+                        "surface-container-lowest": "#080f17",
+                        "on-surface": "#dde3ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "20px",
+                        "md": "24px",
+                        "container-max": "1440px",
+                        "lg": "32px",
+                        "xl": "48px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "data-kpi": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "data-kpi": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .status-glow-success { box-shadow: 0 0 15px rgba(0, 155, 119, 0.2); }
+        .status-glow-warning { box-shadow: 0 0 15px rgba(255, 193, 7, 0.2); }
+        .status-glow-danger { box-shadow: 0 0 15px rgba(220, 53, 69, 0.2); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-border-subtle flex justify-between items-center px-gutter h-16">
+<div class="font-headline-md text-headline-md font-bold tracking-tight text-primary">CementWorks Pro</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Berber Cement</span>
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-gutter max-w-container-max mx-auto">
+<!-- Page Header -->
+<section class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-text-high-contrast mb-xs">Monthly KPI Scorecard</h1>
+<p class="text-on-surface-variant font-body-md">Operational Performance Review • October 2023</p>
+</div>
+<div class="flex gap-xs">
+<div class="bg-surface-card border border-border-subtle px-sm py-xs rounded flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Plant Online</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-sm py-xs rounded-full font-label-sm text-label-sm hover:brightness-110 transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export PDF
+                </button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Crusher Department -->
+<div class="md:col-span-6 lg:col-span-4 bg-surface-card border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center bg-surface-container-high/30">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
+                        Crusher
+                    </h2>
+<span class="font-label-sm text-label-sm bg-status-success/20 text-status-success px-2 py-0.5 rounded-full">Optimal</span>
+</div>
+<div class="p-sm space-y-md flex-grow">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Feed Rate</p>
+<p class="font-data-kpi text-data-kpi text-primary">450 <span class="text-body-md font-body-md text-on-surface-variant">t/h</span></p>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Availability</p>
+<p class="font-data-kpi text-data-kpi text-primary">94.2<span class="text-body-md font-body-md text-on-surface-variant">%</span></p>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Kiln Department (Wide/Primary) -->
+<div class="md:col-span-12 lg:col-span-8 bg-surface-card border border-border-subtle rounded-xl overflow-hidden relative">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center bg-surface-container-high/30">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+                        Kiln Operation
+                    </h2>
+<span class="font-label-sm text-label-sm bg-status-warning/20 text-status-warning px-2 py-0.5 rounded-full">Caution</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md p-sm">
+<div class="space-y-md">
+<div class="flex justify-between items-end p-xs bg-surface-container/50 rounded border border-border-subtle/50">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Daily Clinker Prod.</p>
+<p class="font-data-kpi text-data-kpi text-primary">3,120 <span class="text-body-md font-body-md text-on-surface-variant">MT</span></p>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-end p-xs bg-surface-container/50 rounded border border-border-subtle/50 status-glow-warning">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Specific Heat Cons.</p>
+<p class="font-data-kpi text-data-kpi text-status-warning">765 <span class="text-body-md font-body-md text-on-surface-variant">kcal/kg</span></p>
+</div>
+<span class="material-symbols-outlined text-status-warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div class="flex items-center justify-center min-h-[160px] bg-surface-container-low/40 rounded border border-dashed border-border-subtle">
+<div class="text-center">
+<img alt="Thermal chart" class="max-h-32 opacity-80" data-alt="A sophisticated thermal imaging line chart showing the temperature profile across a long industrial cement kiln. The line fluctuates between deep orange and glowing white against a dark technical grid. Detailed labels in JetBrains Mono indicate temperature zones. The overall aesthetic is industrial dark mode with glassmorphic transparency effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ7lnpADTR7S8KAIuVP3zNJgMUPOeX3nOFVWdqSmKogIYQ5eit5jlc47kwx3Izh4ZmJA6lkQTdJhs_ZA8pvD9MFOyAicY4CfiQwdI8r706XVlrsTy3JNSiK8T1J_co7yvJkFwsp15OntgvUG2Z3y77XlWrjD1bquRn_zhtkwKLN7fUnZ_VIhSJ1RyS8YI_Xwj5dl1O0vP8wdCPgM_Qam7eWI4yfK1Cjxzq1ugTGCjYvXXO7CDdZ2IXml8U8ny2oq2TOBDA65xaBpqt"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Real-time Thermal Monitor</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Cement Mills -->
+<div class="md:col-span-6 lg:col-span-4 bg-surface-card border border-border-subtle rounded-xl overflow-hidden">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center bg-surface-container-high/30">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">settings_slow_motion</span>
+                        Cement Mills
+                    </h2>
+<span class="font-label-sm text-label-sm bg-status-danger/20 text-status-danger px-2 py-0.5 rounded-full">Critical</span>
+</div>
+<div class="p-sm space-y-md">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Mill Feed (Total)</p>
+<p class="font-data-kpi text-data-kpi text-primary">125 <span class="text-body-md font-body-md text-on-surface-variant">t/h</span></p>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-end p-xs bg-status-danger/5 rounded border border-status-danger/20">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Spec. Power Consumption</p>
+<p class="font-data-kpi text-data-kpi text-status-danger">38.2 <span class="text-body-md font-body-md text-on-surface-variant">kWh/t</span></p>
+</div>
+<span class="material-symbols-outlined text-status-danger" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</div>
+</div>
+</div>
+<!-- Quality Control -->
+<div class="md:col-span-6 lg:col-span-4 bg-surface-card border border-border-subtle rounded-xl overflow-hidden">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center bg-surface-container-high/30">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">biotech</span>
+                        Quality Control
+                    </h2>
+<span class="font-label-sm text-label-sm bg-status-success/20 text-status-success px-2 py-0.5 rounded-full">Pass</span>
+</div>
+<div class="p-sm space-y-md">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">LSF (Lime Saturation)</p>
+<div class="flex items-baseline gap-xs">
+<p class="font-data-kpi text-data-kpi text-primary">96.8</p>
+<span class="text-label-sm font-label-sm text-status-success">Target: 96-98</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Free Lime (fCaO)</p>
+<div class="flex items-baseline gap-xs">
+<p class="font-data-kpi text-data-kpi text-primary">1.25<span class="text-body-md font-body-md text-on-surface-variant">%</span></p>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Target: &lt; 1.5</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Packing & Dispatch -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-card border border-border-subtle rounded-xl overflow-hidden">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center bg-surface-container-high/30">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+                        Packing &amp; Dispatch
+                    </h2>
+<span class="font-label-sm text-label-sm bg-status-info/20 text-status-info px-2 py-0.5 rounded-full">Active</span>
+</div>
+<div class="p-sm space-y-md">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Dispatch Rate</p>
+<p class="font-data-kpi text-data-kpi text-primary">4,500 <span class="text-body-md font-body-md text-on-surface-variant">Bags/h</span></p>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">Bag Quality Index</p>
+<p class="font-data-kpi text-data-kpi text-primary">99.1<span class="text-body-md font-body-md text-on-surface-variant">%</span></p>
+</div>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-border-subtle h-16 flex justify-around items-center px-xs">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Executive</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="font-label-sm text-label-sm">Production</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">pause_circle</span>
+<span class="font-label-sm text-label-sm">Stoppage</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary rounded-full px-4 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-sm text-label-sm">Scorecard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Visuals</span>
+</a>
+</nav>
+</body></html>

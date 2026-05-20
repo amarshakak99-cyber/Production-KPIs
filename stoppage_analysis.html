@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stoppage Analysis | Berber Cement</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "surface-dim": "#0e141c",
+                        "background": "#0e141c",
+                        "on-secondary-container": "#eca57b",
+                        "on-primary-fixed": "#001c38",
+                        "text-muted": "#B0BCC7",
+                        "inverse-primary": "#386090",
+                        "on-tertiary-container": "#005e47",
+                        "primary": "#d3e4ff",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "inverse-surface": "#dde3ef",
+                        "surface-container-high": "#1e2a3e",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#2f353e",
+                        "text-high-contrast": "#FFFFFF",
+                        "surface-card": "#26354D",
+                        "surface-bright": "#333a43",
+                        "on-primary-fixed-variant": "#1c4877",
+                        "on-background": "#dde3ef",
+                        "border-subtle": "#364966",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2b313a",
+                        "outline": "#8d919a",
+                        "secondary-fixed-dim": "#ffb68b",
+                        "on-primary": "#00315b",
+                        "surface-container": "#1a2029",
+                        "outline-variant": "#42474f",
+                        "tertiary-container": "#63dbb3",
+                        "primary-container": "#a2c9ff",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "surface-variant": "#2f353e",
+                        "on-secondary": "#502405",
+                        "secondary-container": "#6c3a19",
+                        "secondary": "#ffb68b",
+                        "surface": "#071326",
+                        "on-tertiary": "#003829",
+                        "secondary-fixed": "#ffdbc9",
+                        "status-info": "#0066B3",
+                        "on-secondary-fixed": "#321200",
+                        "on-secondary-fixed-variant": "#6c3a19",
+                        "status-success": "#009B77",
+                        "on-primary-container": "#2b5483",
+                        "status-warning": "#FFC107",
+                        "on-tertiary-fixed": "#002117",
+                        "primary-fixed": "#d3e4ff",
+                        "surface-tint": "#a2c9ff",
+                        "status-danger": "#DC3545",
+                        "tertiary-fixed-dim": "#63dbb3",
+                        "on-surface-variant": "#c3c6d0",
+                        "tertiary-fixed": "#81f8ce",
+                        "surface-container-low": "#161c24",
+                        "tertiary": "#81f8ce",
+                        "surface-container-lowest": "#080f17",
+                        "on-surface": "#dde3ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "20px",
+                        "md": "24px",
+                        "container-max": "1440px",
+                        "lg": "32px",
+                        "xl": "48px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "data-kpi": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-dashed-line {
+            stroke-dasharray: 4 4;
+        }
+        .glass-overlay {
+            background: rgba(162, 201, 255, 0.05);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle dark:border-border-subtle docked full-width top-0 z-50 fixed">
+<div class="flex justify-between items-center px-gutter w-full h-16">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary">CementWorks Pro</span>
+<span class="text-on-surface-variant opacity-50 px-2">|</span>
+<span class="font-headline-md text-headline-md text-on-surface-variant">Berber Cement</span>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex gap-sm">
+<span class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 cursor-pointer">Executive</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 cursor-pointer">Production</span>
+<span class="text-primary font-bold font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 cursor-pointer">Stoppage</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 cursor-pointer">Scorecard</span>
+</nav>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="settings">settings</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-lg gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-high-contrast mb-xs">Stoppage Analysis</h1>
+<p class="text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-status-warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+                    System tracking active for Kiln Line 2 &amp; Finish Mill 4
+                </p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs bg-surface-container-high px-sm py-2 rounded-xl text-label-sm font-label-sm border border-border-subtle hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                    Last 30 Days
+                </button>
+<button class="bg-primary-container text-on-primary-container px-sm py-2 rounded-full text-label-sm font-label-sm font-bold shadow-[0_0_15px_rgba(162,201,255,0.3)] active:scale-95 transition-all">
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- MTBF Trend Line (Full Width or 8 Columns) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-card border border-border-subtle rounded-xl p-md overflow-hidden relative">
+<div class="flex justify-between items-center border-b border-border-subtle pb-sm mb-md">
+<h3 class="font-headline-md text-headline-md text-high-contrast">MTBF Trend Analysis</h3>
+<div class="flex items-center gap-sm">
+<span class="flex items-center gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<span class="w-3 h-3 bg-primary rounded-full"></span> Actual
+                        </span>
+<span class="flex items-center gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<span class="w-3 h-0.5 bg-outline border-t border-dashed border-outline"></span> Target (48h)
+                        </span>
+</div>
+</div>
+<div class="h-64 w-full flex items-end justify-between px-2 relative">
+<!-- SVG Chart Logic -->
+<svg class="absolute inset-0 w-full h-full px-2" preserveaspectratio="none">
+<!-- Target Line -->
+<line stroke="#8d919a" stroke-dasharray="8 4" stroke-width="1" x1="0" x2="100%" y1="40%" y2="40%"></line>
+<!-- MTBF Trend Line -->
+<path class="drop-shadow-[0_0_8px_rgba(162,201,255,0.5)]" d="M0 80 Q 100 70, 200 85 T 400 60 T 600 45 T 800 55 T 1000 35" fill="none" stroke="#a2c9ff" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="10%" cy="80%" fill="#a2c9ff" r="5"></circle>
+<circle cx="30%" cy="85%" fill="#a2c9ff" r="5"></circle>
+<circle cx="50%" cy="60%" fill="#a2c9ff" r="5"></circle>
+<circle cx="70%" cy="45%" fill="#a2c9ff" r="5"></circle>
+<circle cx="90%" cy="35%" fill="#a2c9ff" r="5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-md pb-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Week 1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Week 2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Week 3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Week 4</span>
+</div>
+</div>
+</div>
+<!-- Downtime Breakdown Donut (4 Columns) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-card border border-border-subtle rounded-xl p-md">
+<div class="flex justify-between items-center border-b border-border-subtle pb-sm mb-md">
+<h3 class="font-headline-md text-headline-md text-high-contrast">Cause Breakdown</h3>
+</div>
+<div class="flex flex-col items-center justify-center py-sm">
+<div class="relative w-40 h-40 mb-md">
+<!-- Donut Visual -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#1a2029" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#ffb4ab" stroke-dasharray="45 100" stroke-dashoffset="0" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#ffb68b" stroke-dasharray="30 100" stroke-dashoffset="-45" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#a2c9ff" stroke-dasharray="25 100" stroke-dashoffset="-75" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-kpi text-data-kpi text-high-contrast">84h</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Total</span>
+</div>
+</div>
+<div class="w-full space-y-xs">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-error"></span> Mechanical
+                            </span>
+<span class="font-label-sm text-label-sm text-high-contrast">45%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Electrical
+                            </span>
+<span class="font-label-sm text-label-sm text-high-contrast">30%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Operational
+                            </span>
+<span class="font-label-sm text-label-sm text-high-contrast">25%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Downtime Pareto Chart (12 Columns) -->
+<div class="col-span-12 bg-surface-card border border-border-subtle rounded-xl p-md">
+<div class="flex justify-between items-center border-b border-border-subtle pb-sm mb-md">
+<h3 class="font-headline-md text-headline-md text-high-contrast">Downtime Pareto - Frequency vs Duration</h3>
+</div>
+<div class="h-64 flex items-end gap-md px-md">
+<!-- Pareto Bars -->
+<div class="flex-1 flex flex-col justify-end group">
+<div class="bg-primary/20 hover:bg-primary/40 border-x border-t border-primary/50 transition-all rounded-t-lg h-[95%]" title="Raw Mill 1"></div>
+<span class="mt-2 text-center font-label-sm text-label-sm text-on-surface-variant truncate">Raw Mill 1</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="bg-primary/20 hover:bg-primary/40 border-x border-t border-primary/50 transition-all rounded-t-lg h-[75%]" title="Kiln 2 Main"></div>
+<span class="mt-2 text-center font-label-sm text-label-sm text-on-surface-variant truncate">Kiln 2 Main</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="bg-primary/20 hover:bg-primary/40 border-x border-t border-primary/50 transition-all rounded-t-lg h-[50%]" title="Clinker Cooler"></div>
+<span class="mt-2 text-center font-label-sm text-label-sm text-on-surface-variant truncate">Clinker Cooler</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="bg-primary/20 hover:bg-primary/40 border-x border-t border-primary/50 transition-all rounded-t-lg h-[40%]" title="Conveyor C4"></div>
+<span class="mt-2 text-center font-label-sm text-label-sm text-on-surface-variant truncate">Conveyor C4</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="bg-primary/20 hover:bg-primary/40 border-x border-t border-primary/50 transition-all rounded-t-lg h-[25%]" title="Pre-heater Fan"></div>
+<span class="mt-2 text-center font-label-sm text-label-sm text-on-surface-variant truncate">Pre-heater Fan</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="bg-primary/20 hover:bg-primary/40 border-x border-t border-primary/50 transition-all rounded-t-lg h-[15%]" title="Finish Mill 3"></div>
+<span class="mt-2 text-center font-label-sm text-label-sm text-on-surface-variant truncate">Finish Mill 3</span>
+</div>
+</div>
+</div>
+<!-- Stoppage Details Table (12 Columns) -->
+<div class="col-span-12 bg-surface-card border border-border-subtle rounded-xl overflow-hidden mb-lg">
+<div class="px-md py-sm border-b border-border-subtle bg-surface-container-high flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-high-contrast">Stoppage Details</h3>
+<span class="bg-error-container text-on-error-container font-label-sm text-label-sm px-xs py-0.5 rounded-lg">Critical Events (&gt; 4h)</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<tr>
+<th class="px-md py-sm border-b border-border-subtle">Equipment ID</th>
+<th class="px-md py-sm border-b border-border-subtle">Category</th>
+<th class="px-md py-sm border-b border-border-subtle">Start Time</th>
+<th class="px-md py-sm border-b border-border-subtle">Duration</th>
+<th class="px-md py-sm border-b border-border-subtle">Status</th>
+<th class="px-md py-sm border-b border-border-subtle">Notes</th>
+</tr>
+</thead>
+<tbody class="text-on-surface divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-md py-md font-label-sm text-label-sm text-primary">RM-01-B</td>
+<td class="px-md py-md text-body-md">Mechanical</td>
+<td class="px-md py-md text-body-md text-on-surface-variant">Oct 24, 08:15</td>
+<td class="px-md py-md font-data-kpi text-label-sm bg-error-container/30 text-error">12h 45m</td>
+<td class="px-md py-md">
+<span class="bg-status-danger/20 text-status-danger text-label-sm px-2 py-0.5 rounded-full border border-status-danger/30">Resolved</span>
+</td>
+<td class="px-md py-md text-on-surface-variant text-body-md truncate max-w-[200px]">Main gearbox bearing failure</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-md py-md font-label-sm text-label-sm text-primary">KL-02-D</td>
+<td class="px-md py-md text-body-md">Electrical</td>
+<td class="px-md py-md text-on-surface-variant">Oct 25, 14:30</td>
+<td class="px-md py-md font-data-kpi text-label-sm bg-error-container/30 text-error">05h 20m</td>
+<td class="px-md py-md">
+<span class="bg-status-danger/20 text-status-danger text-label-sm px-2 py-0.5 rounded-full border border-status-danger/30">Resolved</span>
+</td>
+<td class="px-md py-md text-on-surface-variant text-body-md truncate max-w-[200px]">VFD Trip - Overcurrent</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-md py-md font-label-sm text-label-sm text-primary">CC-04-A</td>
+<td class="px-md py-md text-body-md">Operational</td>
+<td class="px-md py-md text-on-surface-variant">Oct 26, 02:00</td>
+<td class="px-md py-md font-data-kpi text-label-sm text-high-contrast">01h 15m</td>
+<td class="px-md py-md">
+<span class="bg-status-success/20 text-status-success text-label-sm px-2 py-0.5 rounded-full border border-status-success/30">Resolved</span>
+</td>
+<td class="px-md py-md text-on-surface-variant text-body-md truncate max-w-[200px]">Scheduled cleaning</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-md py-md font-label-sm text-label-sm text-primary">FM-04-X</td>
+<td class="px-md py-md text-body-md">Mechanical</td>
+<td class="px-md py-md text-on-surface-variant">Oct 27, 21:40</td>
+<td class="px-md py-md font-data-kpi text-label-sm bg-error-container/30 text-error">08h 10m</td>
+<td class="px-md py-md">
+<span class="bg-status-warning/20 text-status-warning text-label-sm px-2 py-0.5 rounded-full border border-status-warning/30">Investigating</span>
+</td>
+<td class="px-md py-md text-on-surface-variant text-body-md truncate max-w-[200px]">Abnormal vibration detected</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container dark:bg-surface-container border-t border-border-subtle dark:border-border-subtle fixed bottom-0 w-full z-50">
+<div class="flex justify-around items-center h-16 px-xs w-full">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Executive</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="font-label-sm text-label-sm">Production</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary rounded-full px-4 py-1 scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="pause_circle" style="font-variation-settings: 'FILL' 1;">pause_circle</span>
+<span class="font-label-sm text-label-sm">Stoppage</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-sm text-label-sm">Scorecard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Visuals</span>
+</div>
+</div>
+</nav>
+<!-- Contextual FAB (Only on relevant screens) -->
+<div class="fixed bottom-24 right-gutter md:bottom-8 md:right-8 z-40">
+<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

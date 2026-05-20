@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Executive Dashboard | Berber Cement</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "surface-dim": "#0e141c",
+                    "background": "#0e141c",
+                    "on-secondary-container": "#eca57b",
+                    "on-primary-fixed": "#001c38",
+                    "text-muted": "#B0BCC7",
+                    "inverse-primary": "#386090",
+                    "on-tertiary-container": "#005e47",
+                    "primary": "#d3e4ff",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#a2c9ff",
+                    "inverse-surface": "#dde3ef",
+                    "surface-container-high": "#1e2a3e",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#2f353e",
+                    "text-high-contrast": "#FFFFFF",
+                    "surface-card": "#26354D",
+                    "surface-bright": "#333a43",
+                    "on-primary-fixed-variant": "#1c4877",
+                    "on-background": "#dde3ef",
+                    "border-subtle": "#364966",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#2b313a",
+                    "outline": "#8d919a",
+                    "secondary-fixed-dim": "#ffb68b",
+                    "on-primary": "#00315b",
+                    "surface-container": "#1a2029",
+                    "outline-variant": "#42474f",
+                    "tertiary-container": "#63dbb3",
+                    "primary-container": "#a2c9ff",
+                    "on-tertiary-fixed-variant": "#00513d",
+                    "surface-variant": "#2f353e",
+                    "on-secondary": "#502405",
+                    "secondary-container": "#6c3a19",
+                    "secondary": "#ffb68b",
+                    "surface": "#071326",
+                    "on-tertiary": "#003829",
+                    "secondary-fixed": "#ffdbc9",
+                    "status-info": "#0066B3",
+                    "on-secondary-fixed": "#321200",
+                    "on-secondary-fixed-variant": "#6c3a19",
+                    "status-success": "#009B77",
+                    "on-primary-container": "#2b5483",
+                    "status-warning": "#FFC107",
+                    "on-tertiary-fixed": "#002117",
+                    "primary-fixed": "#d3e4ff",
+                    "surface-tint": "#a2c9ff",
+                    "status-danger": "#DC3545",
+                    "tertiary-fixed-dim": "#63dbb3",
+                    "on-surface-variant": "#c3c6d0",
+                    "tertiary-fixed": "#81f8ce",
+                    "surface-container-low": "#161c24",
+                    "tertiary": "#81f8ce",
+                    "surface-container-lowest": "#080f17",
+                    "on-surface": "#dde3ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "md": "24px",
+                    "container-max": "1440px",
+                    "lg": "32px",
+                    "xl": "48px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "sm": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "data-kpi": ["JetBrains Mono"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "data-kpi": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-grid-line {
+            background-image: linear-gradient(to right, #364966 1px, transparent 1px);
+            background-size: 40px 100%;
+        }
+        .glass-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(162, 201, 255, 0.15) 0%, transparent 70%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 z-50 bg-surface border-b border-border-subtle flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">factory</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Berber Cement</h1>
+</div>
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-primary font-bold font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#">Executive</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#">Production</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#">Stoppage</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#">Scorecard</a>
+<a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded" href="#">Visuals</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded transition-colors">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded transition-colors">settings</button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto p-gutter space-y-gutter">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-sm">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-text-high-contrast">Plant Performance Dashboard</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Real-time operational overview for Berber Facility</p>
+</div>
+<div class="flex items-center gap-xs bg-surface-container px-sm py-xs rounded border border-border-subtle">
+<span class="material-symbols-outlined text-status-success text-sm" style="font-variation-settings: 'FILL' 1;">fiber_manual_record</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">System Online: Live Data</span>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- OEE Card -->
+<div class="bg-surface-card border border-border-subtle p-md rounded-lg glass-glow relative overflow-hidden">
+<div class="flex justify-between items-start mb-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">OEE %</span>
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-data-kpi text-data-kpi text-primary">78.5%</span>
+<span class="text-status-success font-label-sm text-label-sm flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> 2.4%
+                    </span>
+</div>
+<div class="mt-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 78.5%"></div>
+</div>
+</div>
+<!-- Production Card -->
+<div class="bg-surface-card border border-border-subtle p-md rounded-lg relative overflow-hidden">
+<div class="flex justify-between items-start mb-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Production</span>
+<span class="material-symbols-outlined text-secondary text-lg">precision_manufacturing</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-data-kpi text-data-kpi text-secondary">25,400</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Tons</span>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mt-xs">Target: 26,000 Tons</p>
+</div>
+<!-- Downtime Card -->
+<div class="bg-surface-card border border-border-subtle p-md rounded-lg relative overflow-hidden">
+<div class="flex justify-between items-start mb-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Downtime</span>
+<span class="material-symbols-outlined text-status-danger text-lg">pause_circle</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-data-kpi text-data-kpi text-error">120.0</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Hours</span>
+</div>
+<div class="flex items-center gap-base mt-xs">
+<div class="h-2 w-2 rounded-full bg-status-danger"></div>
+<span class="text-error font-label-sm text-label-sm">Critical Threshold: 100h</span>
+</div>
+</div>
+<!-- MTBF Card -->
+<div class="bg-surface-card border border-border-subtle p-md rounded-lg relative overflow-hidden">
+<div class="flex justify-between items-start mb-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">MTBF</span>
+<span class="material-symbols-outlined text-tertiary text-lg">settings_suggest</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-data-kpi text-data-kpi text-tertiary">320.0</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Hours</span>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mt-xs">Last Period: 305h</p>
+</div>
+</div>
+<!-- Main Analytics Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- OEE Trend Line Chart -->
+<div class="lg:col-span-8 bg-surface-card border border-border-subtle rounded-lg flex flex-col overflow-hidden">
+<div class="p-sm md:p-md border-b border-border-subtle flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">OEE Trend (30 Days)</h3>
+<div class="flex items-center gap-xs">
+<span class="flex items-center gap-base text-label-sm font-label-sm text-on-surface-variant">
+<span class="w-3 h-3 rounded-full bg-primary"></span> Actual
+                        </span>
+<span class="flex items-center gap-base text-label-sm font-label-sm text-on-surface-variant ml-sm">
+<span class="w-3 h-3 rounded-full bg-border-subtle border border-primary border-dashed"></span> Target
+                        </span>
+</div>
+</div>
+<div class="flex-1 p-md h-[300px] relative">
+<!-- SVG Chart Representation -->
+<div class="absolute inset-x-md inset-y-md chart-grid-line opacity-20"></div>
+<svg class="w-full h-full overflow-visible" viewbox="0 0 800 240">
+<!-- Target line -->
+<line stroke="#364966" stroke-dasharray="8,4" stroke-width="2" x1="0" x2="800" y1="60" y2="60"></line>
+<!-- Trend path -->
+<path d="M0,180 L80,160 L160,190 L240,140 L320,150 L400,100 L480,120 L560,80 L640,90 L720,70 L800,65" fill="none" stroke="#a2c9ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Area gradient -->
+<path d="M0,180 L80,160 L160,190 L240,140 L320,150 L400,100 L480,120 L560,80 L640,90 L720,70 L800,65 V240 H0 Z" fill="url(#trendGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="trendGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#a2c9ff"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+<!-- Points -->
+<circle cx="240" cy="140" fill="#a2c9ff" r="4"></circle>
+<circle cx="560" cy="80" fill="#a2c9ff" r="4"></circle>
+<circle class="shadow-lg" cx="800" cy="65" fill="#a2c9ff" r="5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-sm text-label-sm font-label-sm text-on-surface-variant">
+<span>01 Nov</span>
+<span>08 Nov</span>
+<span>15 Nov</span>
+<span>22 Nov</span>
+<span>30 Nov</span>
+</div>
+</div>
+</div>
+<!-- OEE by Department Bar Chart -->
+<div class="lg:col-span-4 bg-surface-card border border-border-subtle rounded-lg flex flex-col overflow-hidden">
+<div class="p-sm md:p-md border-b border-border-subtle">
+<h3 class="font-headline-md text-headline-md text-on-surface">OEE by Department</h3>
+</div>
+<div class="p-md space-y-md">
+<!-- Bar Item -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Crushing &amp; Grinding</span>
+<span class="font-bold">84%</span>
+</div>
+<div class="h-6 w-full bg-surface-container rounded-sm flex items-center px-1">
+<div class="h-4 bg-status-success rounded-sm" style="width: 84%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Pyro-processing (Kilns)</span>
+<span class="font-bold">72%</span>
+</div>
+<div class="h-6 w-full bg-surface-container rounded-sm flex items-center px-1">
+<div class="h-4 bg-primary" style="width: 72%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Cement Milling</span>
+<span class="font-bold">79%</span>
+</div>
+<div class="h-6 w-full bg-surface-container rounded-sm flex items-center px-1">
+<div class="h-4 bg-primary" style="width: 79%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Packing &amp; Dispatch</span>
+<span class="font-bold">61%</span>
+</div>
+<div class="h-6 w-full bg-surface-container rounded-sm flex items-center px-1">
+<div class="h-4 bg-status-warning" style="width: 61%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Quality Control</span>
+<span class="font-bold">92%</span>
+</div>
+<div class="h-6 w-full bg-surface-container rounded-sm flex items-center px-1">
+<div class="h-4 bg-status-success" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Events / Status Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter pb-xl">
+<div class="lg:col-span-2 bg-surface-card border border-border-subtle rounded-lg overflow-hidden">
+<div class="p-sm md:p-md border-b border-border-subtle flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Critical Stoppages</h3>
+<button class="font-label-sm text-label-sm text-primary hover:underline">View All Logs</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-high/30">
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Asset ID</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Incident</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Duration</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md font-label-sm text-label-sm text-on-surface">KLN-04-A</td>
+<td class="p-md font-body-md text-body-md text-on-surface">Main Motor Overheat</td>
+<td class="p-md font-label-sm text-label-sm text-on-surface">4h 12m</td>
+<td class="p-md">
+<span class="px-2 py-1 bg-status-danger/20 text-error rounded-full font-label-sm text-label-sm">Active</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md font-label-sm text-label-sm text-on-surface">CRU-12-B</td>
+<td class="p-md font-body-md text-body-md text-on-surface">Conveyor Belt Misalignment</td>
+<td class="p-md font-label-sm text-label-sm text-on-surface">1h 45m</td>
+<td class="p-md">
+<span class="px-2 py-1 bg-status-info/20 text-primary-fixed-dim rounded-full font-label-sm text-label-sm">Resolving</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md font-label-sm text-label-sm text-on-surface">MIL-02-C</td>
+<td class="p-md font-body-md text-body-md text-on-surface">Power Surge Response</td>
+<td class="p-md font-label-sm text-label-sm text-on-surface">0h 15m</td>
+<td class="p-md">
+<span class="px-2 py-1 bg-status-success/20 text-status-success rounded-full font-label-sm text-label-sm">Closed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Operational Insights Card -->
+<div class="bg-surface-container-high border border-border-subtle rounded-lg p-md space-y-md">
+<h3 class="font-headline-md text-headline-md text-primary">Shift Insights</h3>
+<div class="space-y-sm">
+<div class="p-sm bg-surface-card border-l-4 border-status-info rounded">
+<p class="font-body-md text-body-md text-on-surface">Energy consumption is 5% below baseline for the current kiln run.</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs block">AI Recommendation: Sustain current RPM</span>
+</div>
+<div class="p-sm bg-surface-card border-l-4 border-status-warning rounded">
+<p class="font-body-md text-body-md text-on-surface">Preventive maintenance due for Ball Mill #3 in 48 operational hours.</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs block">Asset Health: 82%</span>
+</div>
+</div>
+<div class="pt-sm">
+<img alt="Factory floor visualization" class="w-full h-32 object-cover rounded opacity-80 border border-border-subtle" data-alt="A wide-angle, high-contrast photograph of a massive industrial cement kiln inside a dimly lit manufacturing plant. The scene is dominated by deep navy and metallic tones, illuminated by tactical blue and amber status lights. Steaming pipes and heavy machinery are captured in sharp detail, reflecting a professional and authoritative industrial monitoring environment. The atmosphere is clinical and technologically sophisticated, highlighting heavy-duty reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeVAu8YBz04-M-1q-nYfkfxwPjDupioqT1jWKU2wJKjIaQ6Nu6ofVeiTg9Yro0yM96YTgcw1AGDaKagCRZdA5E06ubuE2TGbrNGv73ObohUW8C22gfizuaOZyUSFXs29HIKOkJb4M0bNxlWoq3BCO89M1fjJUBlIUyXu9ubBgAvPOVtKWi_kqP8T17XOjAGjs70q6D25QuuNcOnRcrxgmOTh15W0NlkOWdMyJLGg5bWUvuYJUGClxLl3LxsAzlgxOueEQiaYFlhY6M"/>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container border-t border-border-subtle flex justify-around items-center h-16 px-xs">
+<button class="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary rounded-full px-4 py-1 transition-all scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Executive</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="font-label-sm text-label-sm">Production</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">pause_circle</span>
+<span class="font-label-sm text-label-sm">Stoppage</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-sm text-label-sm">Scorecard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Visuals</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Berber Cement - Advanced Visuals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "surface-dim": "#0e141c",
+                    "background": "#0e141c",
+                    "on-secondary-container": "#eca57b",
+                    "on-primary-fixed": "#001c38",
+                    "text-muted": "#B0BCC7",
+                    "inverse-primary": "#386090",
+                    "on-tertiary-container": "#005e47",
+                    "primary": "#d3e4ff",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#a2c9ff",
+                    "inverse-surface": "#dde3ef",
+                    "surface-container-high": "#1e2a3e",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#2f353e",
+                    "text-high-contrast": "#FFFFFF",
+                    "surface-card": "#26354D",
+                    "surface-bright": "#333a43",
+                    "on-primary-fixed-variant": "#1c4877",
+                    "on-background": "#dde3ef",
+                    "border-subtle": "#364966",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#2b313a",
+                    "outline": "#8d919a",
+                    "secondary-fixed-dim": "#ffb68b",
+                    "on-primary": "#00315b",
+                    "surface-container": "#1a2029",
+                    "outline-variant": "#42474f",
+                    "tertiary-container": "#63dbb3",
+                    "primary-container": "#a2c9ff",
+                    "on-tertiary-fixed-variant": "#00513d",
+                    "surface-variant": "#2f353e",
+                    "on-secondary": "#502405",
+                    "secondary-container": "#6c3a19",
+                    "secondary": "#ffb68b",
+                    "surface": "#071326",
+                    "on-tertiary": "#003829",
+                    "secondary-fixed": "#ffdbc9",
+                    "status-info": "#0066B3",
+                    "on-secondary-fixed": "#321200",
+                    "on-secondary-fixed-variant": "#6c3a19",
+                    "status-success": "#009B77",
+                    "on-primary-container": "#2b5483",
+                    "status-warning": "#FFC107",
+                    "on-tertiary-fixed": "#002117",
+                    "primary-fixed": "#d3e4ff",
+                    "surface-tint": "#a2c9ff",
+                    "status-danger": "#DC3545",
+                    "tertiary-fixed-dim": "#63dbb3",
+                    "on-surface-variant": "#c3c6d0",
+                    "tertiary-fixed": "#81f8ce",
+                    "surface-container-low": "#161c24",
+                    "tertiary": "#81f8ce",
+                    "surface-container-lowest": "#080f17",
+                    "on-surface": "#dde3ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "md": "24px",
+                    "container-max": "1440px",
+                    "lg": "32px",
+                    "xl": "48px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "sm": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "data-kpi": ["JetBrains Mono"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "data-kpi": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-grid-line {
+            background-image: linear-gradient(to right, #364966 1px, transparent 1px);
+            background-size: 40px 100%;
+        }
+        .sankey-gradient-1 {
+            background: linear-gradient(90deg, rgba(162, 201, 255, 0.3) 0%, rgba(0, 155, 119, 0.2) 100%);
+        }
+        .sankey-gradient-2 {
+            background: linear-gradient(90deg, rgba(162, 201, 255, 0.3) 0%, rgba(220, 53, 69, 0.2) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary/30">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 z-50 w-full flex justify-between items-center px-gutter h-16 bg-surface border-b border-border-subtle">
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">CementWorks Pro</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-secondary border border-border-subtle ml-2">BERBER-UNIT-04</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-24 px-gutter max-w-container-max mx-auto space-y-gutter">
+<!-- Header & Breadcrumbs -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-sm">
+<div>
+<nav class="flex items-center gap-xs mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Operational Analytics</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Advanced Visuals</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-text-high-contrast">Performance Intelligence</h1>
+</div>
+<div class="flex gap-xs">
+<button class="px-4 py-2 bg-surface-container-high border border-border-subtle rounded-lg flex items-center gap-2 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-body-md">calendar_today</span>
+<span class="font-label-sm text-label-sm">Last 24 Hours</span>
+</button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-body-md">download</span>
+<span class="font-label-sm text-label-sm">Export Data</span>
+</button>
+</div>
+</section>
+<!-- OEE Waterfall Chart (Full 12-column) -->
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center bg-surface-container/50">
+<h2 class="font-headline-md text-headline-md text-primary">OEE Loss Waterfall</h2>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 bg-primary rounded-sm"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Capacity</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 bg-error rounded-sm"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Losses</span>
+</div>
+</div>
+</div>
+<div class="p-md h-[300px] flex items-end gap-gutter chart-grid-line">
+<!-- Theoretical -->
+<div class="flex-1 flex flex-col items-center group relative">
+<div class="w-full bg-primary/20 border border-primary h-full relative flex items-center justify-center">
+<span class="font-data-kpi text-[18px] text-primary">100%</span>
+</div>
+<span class="mt-xs font-label-sm text-label-sm text-on-surface-variant text-center">Theoretical</span>
+</div>
+<!-- Availability Loss -->
+<div class="flex-1 flex flex-col items-center group relative h-full">
+<div class="w-full bg-error/20 border border-error h-[15%] mt-[0%] relative flex items-center justify-center">
+<div class="absolute -top-6 font-label-sm text-error">-15%</div>
+</div>
+<div class="absolute top-[15%] w-full border-t border-dashed border-outline-variant"></div>
+<span class="mt-auto font-label-sm text-label-sm text-on-surface-variant text-center">Availability</span>
+</div>
+<!-- Performance Loss -->
+<div class="flex-1 flex flex-col items-center group relative h-full">
+<div class="w-full bg-error/20 border border-error h-[10%] mt-[15%] relative flex items-center justify-center">
+<div class="absolute -top-6 font-label-sm text-error">-10%</div>
+</div>
+<div class="absolute top-[25%] w-full border-t border-dashed border-outline-variant"></div>
+<span class="mt-auto font-label-sm text-label-sm text-on-surface-variant text-center">Performance</span>
+</div>
+<!-- Quality Loss -->
+<div class="flex-1 flex flex-col items-center group relative h-full">
+<div class="w-full bg-error/20 border border-error h-[5%] mt-[25%] relative flex items-center justify-center">
+<div class="absolute -top-6 font-label-sm text-error">-5%</div>
+</div>
+<div class="absolute top-[30%] w-full border-t border-dashed border-outline-variant"></div>
+<span class="mt-auto font-label-sm text-label-sm text-on-surface-variant text-center">Quality</span>
+</div>
+<!-- Actual OEE -->
+<div class="flex-1 flex flex-col items-center group relative h-full">
+<div class="w-full bg-status-success/20 border border-status-success h-[70%] mt-[30%] relative flex items-center justify-center">
+<span class="font-data-kpi text-[18px] text-status-success">70%</span>
+<div class="absolute -top-4 right-0 transform translate-x-1/2">
+<span class="material-symbols-outlined text-status-success text-body-md" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+<span class="mt-auto font-label-sm text-label-sm text-on-surface-variant text-center font-bold">Actual OEE</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Section Comparison Radar -->
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">Inter-Section Radar</h2>
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</div>
+<div class="p-md flex items-center justify-center min-h-[360px] relative">
+<!-- Radar Chart Mockup using SVGs -->
+<svg class="w-full max-w-[280px]" viewbox="0 0 200 200">
+<!-- Background Polygons -->
+<polygon fill="none" points="100,20 180,60 180,140 100,180 20,140 20,60" stroke="#364966" stroke-width="0.5"></polygon>
+<polygon fill="none" points="100,40 160,73 160,126 100,160 40,126 40,73" stroke="#364966" stroke-width="0.5"></polygon>
+<polygon fill="none" points="100,60 140,86 140,113 100,140 60,113 60,86" stroke="#364966" stroke-width="0.5"></polygon>
+<!-- Axis Lines -->
+<line stroke="#364966" stroke-width="0.5" x1="100" x2="100" y1="100" y2="20"></line>
+<line stroke="#364966" stroke-width="0.5" x1="100" x2="180" y1="100" y2="60"></line>
+<line stroke="#364966" stroke-width="0.5" x1="100" x2="180" y1="100" y2="140"></line>
+<line stroke="#364966" stroke-width="0.5" x1="100" x2="100" y1="100" y2="180"></line>
+<line stroke="#364966" stroke-width="0.5" x1="100" x2="20" y1="100" y2="140"></line>
+<line stroke="#364966" stroke-width="0.5" x1="100" x2="20" y1="100" y2="60"></line>
+<!-- Data Shape -->
+<polygon fill="rgba(162, 201, 255, 0.2)" points="100,40 160,80 150,130 100,160 50,130 60,70" stroke="#a2c9ff" stroke-width="2"></polygon>
+</svg>
+<!-- Labels -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 font-label-sm text-on-surface">Crushing</div>
+<div class="absolute top-[25%] right-4 font-label-sm text-on-surface">Milling</div>
+<div class="absolute bottom-[25%] right-4 font-label-sm text-on-surface">Kiln</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 font-label-sm text-on-surface">Cooling</div>
+<div class="absolute bottom-[25%] left-4 font-label-sm text-on-surface">Packing</div>
+<div class="absolute top-[25%] left-4 font-label-sm text-on-surface">Raw Mix</div>
+</div>
+</div>
+<!-- Failure Sankey Flow -->
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="p-sm border-b border-border-subtle">
+<h2 class="font-headline-md text-headline-md text-primary">Failure Propagation Flow</h2>
+</div>
+<div class="p-md flex flex-col gap-6 justify-center min-h-[360px]">
+<!-- Root Cause -->
+<div class="flex items-center gap-xs">
+<div class="w-32 h-16 bg-surface-container-high border border-primary rounded flex flex-col justify-center px-3">
+<span class="font-label-sm text-outline text-[10px] uppercase">Input</span>
+<span class="font-body-md font-bold text-primary">Power Fluctuations</span>
+</div>
+<div class="flex-1 h-6 sankey-gradient-1 relative">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 font-label-sm text-[10px] text-outline italic">65% Impact</div>
+</div>
+<div class="w-32 h-16 bg-surface-container-high border border-status-success/50 rounded flex flex-col justify-center px-3">
+<span class="font-label-sm text-outline text-[10px] uppercase">Symptom</span>
+<span class="font-body-md font-bold text-status-success">Drive Lag</span>
+</div>
+</div>
+<!-- Branch -->
+<div class="flex items-center gap-xs">
+<div class="w-32 h-16 invisible"></div>
+<div class="flex-1 h-12 sankey-gradient-2 relative">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 font-label-sm text-[10px] text-outline italic">35% Failure Path</div>
+</div>
+<div class="w-32 h-16 bg-surface-container-high border border-status-danger/50 rounded flex flex-col justify-center px-3">
+<span class="font-label-sm text-outline text-[10px] uppercase">Critical</span>
+<span class="font-body-md font-bold text-status-danger">Thermal Trip</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MTBF Control Chart -->
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="p-sm border-b border-border-subtle flex justify-between items-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">MTBF Control Analysis</h2>
+<p class="font-label-sm text-on-surface-variant">Mean Time Between Failure Trends</p>
+</div>
+<div class="flex gap-3">
+<span class="px-3 py-1 rounded-full bg-status-danger/20 border border-status-danger text-status-danger font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">error</span>
+                        Anomaly Detected
+                    </span>
+</div>
+</div>
+<div class="p-md h-[400px] relative">
+<!-- Chart Background -->
+<div class="absolute inset-x-md top-md bottom-12 border-l border-b border-outline-variant chart-grid-line opacity-30"></div>
+<!-- Chart Content Layer -->
+<div class="absolute inset-x-md top-md bottom-12 overflow-hidden">
+<!-- Control Bounds -->
+<div class="absolute top-[15%] w-full border-t border-status-warning/40 border-dashed flex items-center">
+<span class="bg-surface-card px-1 font-label-sm text-status-warning text-[10px] ml-2">UCL: 480h</span>
+</div>
+<div class="absolute top-[85%] w-full border-t border-status-warning/40 border-dashed flex items-center">
+<span class="bg-surface-card px-1 font-label-sm text-status-warning text-[10px] ml-2">LCL: 120h</span>
+</div>
+<div class="absolute top-[50%] w-full border-t border-primary/20 flex items-center">
+<span class="bg-surface-card px-1 font-label-sm text-primary text-[10px] ml-2">Mean: 300h</span>
+</div>
+<!-- Trend Line SVG -->
+<svg class="w-full h-full preserve-aspect-ratio-none overflow-visible" viewbox="0 0 1000 300">
+<path d="M 0,150 L 100,140 L 200,160 L 300,120 L 400,240 L 500,260 L 600,100 L 700,80 L 800,130 L 900,140 L 1000,150" fill="none" stroke="#a2c9ff" stroke-width="2.5"></path>
+<!-- Anomaly Circle -->
+<circle class="animate-pulse" cx="500" cy="260" fill="#DC3545" r="8"></circle>
+<circle cx="500" cy="260" fill="rgba(220, 53, 69, 0.2)" r="16"></circle>
+<!-- Data points -->
+<circle cx="100" cy="140" fill="#a2c9ff" r="4"></circle>
+<circle cx="300" cy="120" fill="#a2c9ff" r="4"></circle>
+<circle cx="700" cy="80" fill="#a2c9ff" r="4"></circle>
+</svg>
+<!-- Anomaly Label -->
+<div class="absolute left-[510px] top-[250px] bg-status-danger text-white px-2 py-1 rounded font-label-sm text-[10px]">
+                        Deviation &gt; 2 Sigma
+                    </div>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-4 inset-x-md flex justify-between px-xs">
+<span class="font-label-sm text-outline">00:00</span>
+<span class="font-label-sm text-outline">04:00</span>
+<span class="font-label-sm text-outline">08:00</span>
+<span class="font-label-sm text-outline">12:00</span>
+<span class="font-label-sm text-outline">16:00</span>
+<span class="font-label-sm text-outline">20:00</span>
+<span class="font-label-sm text-outline">NOW</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-xs bg-surface-container border-t border-border-subtle md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Executive</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="font-label-sm text-label-sm">Production</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">pause_circle</span>
+<span class="font-label-sm text-label-sm">Stoppage</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-sm text-label-sm">Scorecard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary rounded-full px-4 py-1 scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm">Visuals</span>
+</div>
+</nav>
+<!-- Desktop Navigation Side Rail (Optional for high-end look) -->
+<aside class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 flex-col items-center py-gutter gap-md bg-surface border-r border-border-subtle">
+<div class="p-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer group flex flex-col items-center">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[8px] mt-1 font-label-sm uppercase">Exec</span>
+</div>
+<div class="p-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer group flex flex-col items-center">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="text-[8px] mt-1 font-label-sm uppercase">Prod</span>
+</div>
+<div class="p-3 text-secondary bg-secondary-container/20 rounded-xl border border-secondary/20 flex flex-col items-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[8px] mt-1 font-label-sm uppercase">Vis</span>
+</div>
+<div class="p-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer group flex flex-col items-center">
+<span class="material-symbols-outlined">assignment</span>
+<span class="text-[8px] mt-1 font-label-sm uppercase">Data</span>
+</div>
+<div class="mt-auto p-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer group flex flex-col items-center">
+<span class="material-symbols-outlined">help</span>
+</div>
+</aside>
+<div class="hidden md:block fixed right-gutter bottom-gutter">
+<button class="bg-primary-container text-on-primary-container p-4 rounded-full shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-sm pr-2">Expert Analysis</span>
+</button>
+</div>
+</body></html>
